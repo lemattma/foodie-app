@@ -1,3 +1,5 @@
 == Foodie App
 
 This is a dummy app for the Rails Workshops.
+
+HAHAHAHAHAHA
