@@ -1,0 +1,19 @@
+%p#notice=notice
+
+%h1 Recipes
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Preparation
+      %th{ colspan: 2 }
+  %tbody
+    - @recipes.each do |recipe|
+      %tr
+        %td= link_to recipe.name, recipe
+        %td= recipe.preparation
+        %td= link_to 'Edit', edit_recipe_path(recipe)
+        %td= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }
+%br
+= link_to 'New Recipe', new_recipe_path
