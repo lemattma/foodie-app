@@ -1,19 +1,19 @@
-%p#notice=notice
+.page-header
+  %h1 Recipes
 
-%h1 Recipes
-
-%table
+%table.table.table-striped
   %thead
     %tr
       %th Name
       %th Preparation
-      %th{ colspan: 2 }
+      %th
   %tbody
     - @recipes.each do |recipe|
       %tr
         %td= link_to recipe.name, recipe
         %td= recipe.preparation
-        %td= link_to 'Edit', edit_recipe_path(recipe)
-        %td= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }
+        %td.text-right
+          = link_to 'Edit', edit_recipe_path(recipe), class: 'btn btn-sm btn-primary'
+          = link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
 %br
-= link_to 'New Recipe', new_recipe_path
+= link_to 'New Recipe', new_recipe_path, class: 'btn btn-primary'

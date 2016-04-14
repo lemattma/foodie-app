@@ -1,23 +1,18 @@
-= form_for(@recipe) do |f|
-  - if @recipe.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@recipe.errors.count, "error")
-        prohibited this recipe from being saved:
-
-      %ul
+.row
+  .col-md-4
+    = form_for(@recipe) do |f|
+      - if @recipe.errors.any?
         - @recipe.errors.full_messages.each do |message|
-          %li= message
-      
-  .field
-    = f.label :name
-    %br
-    = f.text_field :name
+          .alert.alert-danger= message
+          
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
 
-  .field
-    = f.label :preparation
-    %br
-    = f.text_area :preparation
-  
-  .actions
-    = f.submit
+      .form-group
+        = f.label :preparation
+        = f.text_area :preparation, class: 'form-control'
+      
+      .actions
+        = f.submit class: 'btn btn-primary'
+        = link_to 'Back', recipes_path, class: 'btn btn-default'

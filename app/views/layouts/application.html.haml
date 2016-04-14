@@ -1,10 +1,36 @@
-!!!
-%html
+!!! 5
+%html(lang="en")
   %head
-    %title Foodie App
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "#{app_name}"
     = csrf_meta_tags
-    
+    = stylesheet_link_tag 'application', media: 'all'
+    /[if lt IE 9]
+      = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'
+
   %body
-    = yield
+    .navbar.navbar-default.navbar-static-top
+      .container
+        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to app_name, root_path, class: 'navbar-brand'
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          %ul.nav.navbar-nav
+            %li= link_to 'Recipes', recipes_path
+
+    .container
+      .row
+        .col-lg-12
+          - flash.each do |key, value|
+            .alert.alert-success
+              %button.close{ data: { dismiss: 'alert' } } x
+              %strong= value
+          = yield
+      %footer
+        %p.text-center &copy; #{app_name} #{Date.today.year}
+
+  = javascript_include_tag 'application'
