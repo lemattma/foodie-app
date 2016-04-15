@@ -1,18 +1,11 @@
 .row
   .col-md-4
-    = form_for(@recipe) do |f|
-      - if @recipe.errors.any?
-        - @recipe.errors.full_messages.each do |message|
-          .alert.alert-danger= message
-          
-      .form-group
-        = f.label :name
-        = f.text_field :name, class: 'form-control'
-
-      .form-group
-        = f.label :preparation
-        = f.text_area :preparation, class: 'form-control'
+    = simple_form_for @recipe do |f|
+      = f.error_notification
       
-      .actions
-        = f.submit class: 'btn btn-primary'
+      = f.input :name
+      = f.input :preparation
+      
+      .form-actions
+        = f.button :submit, class: 'btn-primary'
         = link_to 'Back', recipes_path, class: 'btn btn-default'
