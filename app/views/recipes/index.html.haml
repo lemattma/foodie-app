@@ -6,12 +6,16 @@
     %tr
       %th Name
       %th Preparation
+      %th Time
+      %th Cost
       %th
   %tbody
     - @recipes.each do |recipe|
       %tr
         %td= link_to recipe.name, recipe
         %td= recipe.preparation
+        %td= recipe.preparation_time
+        %td= number_to_currency recipe.cost
         %td.text-right
           = link_to 'Edit', edit_recipe_path(recipe), class: 'btn btn-sm btn-primary'
           = link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
