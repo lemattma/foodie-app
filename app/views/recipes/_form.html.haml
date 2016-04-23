@@ -1,5 +1,5 @@
 .row
-  .col-md-4
+  .col-md-4.col-md-offset-4
     = simple_form_for @recipe do |f|
       = f.error_notification
       
@@ -7,7 +7,8 @@
       = f.input :preparation_time
       = f.input :cost
       = f.input :preparation
-      
-      .form-actions
+
+      .form-actions.text-center
+        %br
         = f.button :submit, class: 'btn-primary'
         = link_to 'Back', recipes_path, class: 'btn btn-default'
