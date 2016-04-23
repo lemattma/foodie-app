@@ -11,22 +11,23 @@
       = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js'
 
   %body
-    .navbar.navbar-default.navbar-static-top
+    .navbar.navbar-default.navbar-static-top.navbar-inverse
       .container
         %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
         = link_to app_name, root_path, class: 'navbar-brand'
+        = link_to 'Recipes', recipes_path, class: 'navbar-brand'
         .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li= link_to 'Recipes', recipes_path
+          %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
+              %li.navbar-text Welcome #{current_user.email}
+              %li= link_to 'Update Detail', edit_user_registration_path
               %li= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }
             - else
               %li= link_to 'Login', new_user_session_path
               %li= link_to 'Sign Up', new_user_registration_path
-
     .container
       .row
         .col-lg-12
