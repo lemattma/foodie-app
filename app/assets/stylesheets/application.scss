@@ -14,3 +14,40 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.page-header {
+  margin: 90px 0px 30px;
+}
+
+.alert {
+  margin: 60px 0px -70px;
+}
+
+.extramargin {
+  padding: 10px 0px 30px;
+}
+
+.container-box {
+  width:300px; 
+  height:380px; 
+  padding:15px 0px; 
+  background-color:#fafafa;
+  -webkit-box-shadow:0 0 3px #6b696b;
+  -moz-box-shadow:0 0 3px #6b696b;
+  box-shadow:0 0 3px #6b696b;
+}
+
+body {
+  font-family:calibri;
+}
+
+h1{
+  font-weight:bold;
+}
+
+.heading{
+  border-bottom:1px solid #eee;
+  font-weight:bold;
+  padding:5px 0px;
+  font-size:16px;
+}

@@ -1,0 +1,20 @@
+.page-header
+  %h1.text-uppercase.text-center All Recipes
+
+.row
+  - @recipes_all.each_slice(3) do |recipe_two|
+    -recipe_two.each do |recipe|
+      .col-md-4.extramargin
+        .container-box.center-block
+          = image_tag('http://placehold.it/270x240?text=image-holder', class: 'img-responsive center-block img-rounded')
+          .row
+            .col-md-10.col-md-offset-1.text-center
+              %p.heading
+                - if current_user.id == recipe.user_id 
+                  *
+                #{recipe.name} 
+              %p Cost: #{number_to_currency recipe.cost} &nbsp;&nbsp; Time Taken: #{recipe.preparation_time}
+              .text-right
+                = link_to 'Read More', recipe, class: 'btn btn-sm btn-warning' 
+
+
