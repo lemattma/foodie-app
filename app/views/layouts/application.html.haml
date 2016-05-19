@@ -27,6 +27,8 @@
               %li= link_to 'New Recipe', new_recipe_path
             %ul.nav.navbar-nav.navbar-right
               - if user_signed_in?
+                %li 
+                  = image_tag(current_user.avatar, class: 'img-responsive img-rounded')
                 %li.navbar-text Welcome #{current_user.given_name} #{current_user.last_name}
                 %li= link_to 'Edit Profile', edit_user_registration_path
                 %li= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }
