@@ -1,24 +1,53 @@
 %h2 Edit Profile #{resource_name.to_s.humanize}
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+
   .form-inputs
-    = f.input :given_name, required: true, autofocus: true
-    = f.input :last_name, required: true
-    = f.input :birth_date, required: true
-    = f.input :email, required: true
+    %table.table.table-striped
+      %tr
+        %td
+          .row
+            .col-md-5
+              = f.input :given_name, label: 'First Name' , required: true, autofocus: true
+            .col-md-5
+              = f.input :last_name, label: 'Last Name', required: true
+          .row
+            .col-md-10
+              = f.input :birth_date, label: 'Date of Birth', required: true
+          .row
+            .col-md-5
+              = f.input :email, label: 'Email', required: true
 
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %p Currently waiting confirmation for: #{resource.unconfirmed_email}
+              - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                %p Currently waiting confirmation for: #{resource.unconfirmed_email}
 
-    = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
-    = f.input :password_confirmation, required: false
-    = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+            .col-md-5
+              = f.input :password, autocomplete: "off", label: 'New Password' ,hint: "Leave it blank if you don't want to change it", required: false
+          .row
+            .col-md-5
+              = f.input :password_confirmation, label: 'Confirm New Password' ,required: false
+            .col-md-5
+              = f.input :current_password, hint: "Enter current password to save your changes", required: true
+          %br
+            .form-actions
+              .row
+                .col-md-3
+                  = f.button :submit, 'Update', class: 'btn btn-success btn-lg btn-block'
+                .col-md-3
+                  = link_to 'Cancel', root_path ,class: 'btn btn-primary btn-lg btn-block'
 
-  .form-actions
-    = f.button :submit, 'Update'
+        %td
+          .row
+            .col-md-4.extramargin
+              .container-box.center-block
+                = image_tag('http://placehold.it/270x240?text=image-holder', class: 'img-responsive center-block img-rounded')
+                .row
+                  .col-md-10.col-md-offset-1.text-center
+                    %p.heading
+                      Profile Picture
+                      .text-right
+                        = link_to 'Upload', '#', class: 'btn btn-success'
 
-%h3 Cancel my account
-%p
-  Are you Unhappy?
-  = link_to 'Cancel my account', registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-
-= link_to 'Back', :back
+    .row
+      .col-md-3
+        %h4 Delete Your Account ?
+        %p= link_to 'Delete Account', registration_path(resource_name), data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-lg', method: :delete
