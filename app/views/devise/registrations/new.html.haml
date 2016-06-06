@@ -1,14 +1,17 @@
-%h2 Create an account
-%h5 It's free and always will be.
-%br
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :given_name, label: 'First Name', required: true, autofocus: true
-    = f.input :last_name, label: 'Last Name', required: true
-    = f.input :birth_date, label: 'Date of Birth', required: true
-    = f.input :email, label: 'Email', required: true
-    = f.input :password, label: 'Password', required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable)
-    = f.input :password_confirmation, label: 'Confirm Password', required: true
-  .form-actions
-    = f.button :submit, 'Sign up'
-= render 'devise/shared/links'
+.page-header
+  %h2.text-uppercase.text-center 
+    Create an account
+  %h5.text-center It's free and always will be.
+.col-md-4.col-md-offset-4
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    .form-inputs
+      = f.input :given_name, label: 'First Name', required: true, autofocus: true
+      = f.input :last_name, label: 'Last Name', required: true
+      = f.input :birth_date, label: 'Date of Birth', required: true
+      = f.input :email, label: 'Email', required: true
+      = f.input :avatar
+      = f.input :password, label: 'Password', required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable)
+      = f.input :password_confirmation, label: 'Confirm Password', required: true
+    .form-actions.text-center.extramargin
+      = f.button :submit, 'Sign up'
+      = link_to 'Back', :back, class: 'btn btn-default'
